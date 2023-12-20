@@ -7,17 +7,17 @@ use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\FieldItemListInterface;
 
 /**
- * Plugin implementation of the 'edtf_formatter' formatter.
+ * Plugin implementation of the 'Plain' formatter for 'edtf' fields.
  *
  * @FieldFormatter(
- *   id = "edtf_formatter",
- *   label = @Translation("Extended Date/Time Format"),
+ *   id = "edtf_plain",
+ *   label = @Translation("Plain"),
  *   field_types = {
  *     "edtf"
  *   }
  * )
  */
-class EDTFDefaultFormatter extends FormatterBase {
+class EDTFPlainFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}
