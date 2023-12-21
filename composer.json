@@ -2,5 +2,8 @@
     "name": "drupal/edtf",
     "description": "Date fields with support for the Extended Date/Time Format (EDTF)",
     "license": "GPL-2.0+",
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require": {
+        "professional-wiki/edtf": "^1.0"
+    }
 }
