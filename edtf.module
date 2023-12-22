@@ -1,0 +1,5 @@
+<?php
+function edtf_install() {
+  // without the extra weight, the tokens would get overwritten bei the 'tokens' module
+  module_set_weight('edtf', 1);
+}
