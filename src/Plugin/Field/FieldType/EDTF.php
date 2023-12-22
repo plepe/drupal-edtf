@@ -19,7 +19,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
  *   },
  *   category = "date_time",
  *   default_widget = "edtf_widget",
- *   default_formatter = "edtf_formatter"
+ *   default_formatter = "edtf_humanizer"
  * )
  */
 class EDTF extends FieldItemBase {
