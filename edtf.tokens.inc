@@ -3,6 +3,7 @@
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Field\FieldItemList;
+use EDTF\EdtfFactory;
 
 // based on smart_date.tokens.inc
 
@@ -37,6 +38,11 @@ function edtf_token_info() {
         continue;
       }
 
+      $tokens[$token_type . '-' . $field_name]['humanized'] = [
+        'name' => t('Return a huminzed representation of the EDTF value'),
+        'description' => NULL,
+        'module' => 'edtf',
+      ];
       $tokens[$token_type . '-' . $field_name]['year'] = [
         'name' => t('Return the year of the value'),
         'description' => NULL,
@@ -80,10 +86,22 @@ function edtf_tokens($type, $tokens, array $data, array $options, BubbleableMeta
     }
     // Now parse out the pieces of the token name.
     $field = $list->first();
+    // Get the requested property and apply the provided format.
+    $element = $field->getValue();
     if ($approach == 'year') {
-      // Get the requested property and apply the provided format.
-      $element = $field->getValue();
       $replacements[$original] = substr($element['value'], 0, 4);
+    }
+    elseif ($approach === 'humanized') {
+      if (!defined($parser)) {
+        $parser = \EDTF\EdtfFactory::newParser();
+        $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        $humanizer = \EDTF\EdtfFactory::newHumanizerForLanguage($language);
+      }
+
+      $value = $parser->parse($element['value']);
+      $edtfValue = $value->getEdtfValue();
+
+      $replacements[$original] = $humanizer->humanize($edtfValue);
     }
   }
 
