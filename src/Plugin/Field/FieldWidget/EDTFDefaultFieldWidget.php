@@ -47,6 +47,10 @@ class EDTFDefaultFieldWidget extends WidgetBase {
    * Disallows saving invalid EDTF values.
    */
   public static function validateElement($element, FormStateInterface $form_state, $form) {
+    if ($element['#value'] === '') {
+      return;
+    }
+
     $parser = \EDTF\EdtfFactory::newParser();
     $parsingResult = $parser->parse($element['#value']);
     if (!$parsingResult->isValid()) {
