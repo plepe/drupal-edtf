@@ -1,0 +1,6 @@
+services:
+  edtf.twig_extension:
+    arguments: ['@renderer']
+    class: Drupal\edtf\TwigEDTFExtension
+    tags:
+      - { name: twig.extension }
