@@ -28,8 +28,7 @@ class EDTFHumanizerFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
 
     $parser = \EDTF\EdtfFactory::newParser();
-    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-    $humanizer = \EDTF\EdtfFactory::newHumanizerForLanguage($language);
+    $humanizer = \EDTF\EdtfFactory::newHumanizerForLanguage($langcode);
     $element = [];
 
     foreach ($items as $delta => $item) {
