@@ -1,4 +1,5 @@
 name: Extended Date/Time Format
 type: module
 description: Date fields with support for the Extended Date/Time Format (EDTF)
-core_version_requirement: ^10
+package: Field types
+core_version_requirement: ^9 || ^10
