@@ -40,10 +40,10 @@ class TwigEDTFExtension extends AbstractExtension {
   /**
    * Checks the validty of an EDTF value.
    */
-  public function edtfValidate (string $value): bool {
+  public function edtfValidate (string|null $value): bool {
     $this->init();
 
-    $parsingResult = $this->parser->parse($value);
+    $parsingResult = $this->parser->parse($value ?? '');
     return $parsingResult->isValid();
   }
 
@@ -51,10 +51,10 @@ class TwigEDTFExtension extends AbstractExtension {
   /**
    * Returns an humanized version of an EDTF value.
    */
-  public function edtfHumanize (string $value): string|null {
+  public function edtfHumanize (string|null $value): string|null {
     $this->init();
 
-    $parsingResult = $this->parser->parse($value);
+    $parsingResult = $this->parser->parse($value ?? '');
     if (!$parsingResult->isValid()) {
       return null;
     }
@@ -67,10 +67,10 @@ class TwigEDTFExtension extends AbstractExtension {
   /**
    * Returns the year of an EDTF value.
    */
-  public function edtfYear (string $value): int|null {
+  public function edtfYear (string|null $value): int|null {
     $this->init();
 
-    $parsingResult = $this->parser->parse($value);
+    $parsingResult = $this->parser->parse($value ?? '');
     if (!$parsingResult->isValid()) {
       return null;
     }
@@ -83,10 +83,10 @@ class TwigEDTFExtension extends AbstractExtension {
   /**
    * Returns the earliest timestamp of an EDTF value.
    */
-  public function edtfMin (string $value): int|null {
+  public function edtfMin (string|null $value): int|null {
     $this->init();
 
-    $parsingResult = $this->parser->parse($value);
+    $parsingResult = $this->parser->parse($value ?? '');
     if (!$parsingResult->isValid()) {
       return null;
     }
@@ -99,10 +99,10 @@ class TwigEDTFExtension extends AbstractExtension {
   /**
    * Returns the latest timestamp of an EDTF value.
    */
-  public function edtfMax (string $value): int|null {
+  public function edtfMax (string|null $value): int|null {
     $this->init();
 
-    $parsingResult = $this->parser->parse($value);
+    $parsingResult = $this->parser->parse($value ?? '');
     if (!$parsingResult->isValid()) {
       return null;
     }
